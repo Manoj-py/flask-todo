@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+<!doctype html>
+
+
+{% block body %}
+  <body>
+
+
+<!-- Forms -->
+    <div class="container-fluid">
+        <form method="POST" action="/">
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <input type="text" class="form-control" name="title" id="title" >
+              
+            </div>
+            <div class="mb-3">
+              <label for="desc" class="form-label">Description</label>
+              <input type="text" class="form-control" name="desc" id="desc">
+            </div>
+           
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+<!-- table -->
+<div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Sno</th>
+        <th scope="col">Title</th>
+        <th scope="col">Desc</th>
+        <th scope="col">Time</th>
+        <th scope="col">Action</th>
+        <!-- <th scope="col">Handle</th> -->
+      </tr>
+    </thead>
+    <tbody>
+        {% for todo in alltodo  %}
+      <tr>
+        
+        <th scope="row">{{loop.index}}</th>
+        <td>{{todo.title}}</td>
+        <td>{{todo.desc}}</td>
+        <td>{{todo.date_created}}</td>
+        <td><a href="/delete/{{todo.sno}}"><button  type="button" class="btn btn-dark">Delete</button></td></a>
+        <td><a href="/update/{{todo.sno}}"><button  type="button" class="btn btn-dark ">Update</button></td></a>
+      </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+    
+
+   
+  </body>
+
+</html>
+{% endblock body%}
